@@ -1,3 +1,6 @@
 [submodule "AI-ML/Competitions/AI-ML/Competitions/CodeMentor"]
 	path = AI-ML/Competitions/AI-ML/Competitions/CodeMentor
 	url = https://github.com/kotharidhruv/CodeMentor.git
+[submodule "Learnings/Byjus/Learnings/Byjus/project140"]
+	path = Learnings/Byjus/Learnings/Byjus/project140
+	url = https://github.com/kotharidhruv/project-140.git
