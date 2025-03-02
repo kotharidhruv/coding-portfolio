@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Posted Items</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" href="../icon.png" type="image/png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      background-color: #1c1c1c;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav #title {
+      font-size: 2rem;
+      color: #ffffff;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav #title:hover {
+      border-color: #454545;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #454545;
+    }
+
+    .login-container {
+      flex: 1;     
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-content {
+      width: 80%;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #000000;
+    }
+
+    .item {
+      border: 1px solid black;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: black;
+    }
+
+    .item h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+
+    .item p {
+      color: #cdd9de;
+      margin-bottom: 0;
+      line-height: 1.5;
+      overflow: hidden;
+      max-height: 100px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    .item .actions {
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .item .actions button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: gray;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .item .actions button:hover {
+      background-color: #497e87;
+    }
+
+    .quote-container {
+      background-color: #345d66;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #fff;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    a.button {
+      text-decoration: none;
+      color: #fff;
+      background-color: #70a8af;
+      border-radius: 5px;
+      padding: 10px 20px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #497e87;
+    }
+
+    a.button i {
+      margin-right: 5px;
+    }
+  </style>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"></script>
+  <script type="module" src="postedItems.js" defer></script>
+</head>
+
+<body>
+  <nav>
+    <a id="title" href="/index.html">SwapZone</a>
+    <ul id="links">
+      <li><a href="/postItems/postItems.html">Post</a></li>
+      <li><a href="/allItemsPosted/allItemsPosted.html">All Posted Items</a></li>
+    </ul>
+  </nav>
+  <div class="login-container">
+    <div class="login-content">
+      <form>
+        <h2>My Posted Items</h2>
+        <div id="postedItemsList" style="max-width: 800px;">
+  
+          <div class="item">
+            <h3>Item Title 1</h3>
+            <p>Description of Item 1 goes here.</p>
+            <div class="actions">
+              <button>Edit</button>
+              <button>Delete</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <h3>Item Title 2</h3>
+            <p>Description of Item 2 goes here.</p>
+            <div class="actions">
+              <button>Edit</button>
+              <button>Delete</button>
+            </div>
+          </div>
+         
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

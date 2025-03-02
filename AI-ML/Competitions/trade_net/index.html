@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwapZone</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" href="icon.png" type="image/x-png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #1c1c1c;
+      color: #ffffff;
+    }
+
+    nav {
+      background-color: #000000;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    nav #title {
+      font-size: 2rem;
+      color: #ffffff;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav #title:hover {
+      border-color: #454545;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #454545;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #272727;
+    }
+
+    header h1 {
+      color: #ffffff;
+    }
+
+    .fade-text {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 2rem;
+      position: fixed;
+      margin-left: 45%;
+      height: 3rem;
+    }
+
+    @keyframes fade {
+      0%, 50%, 100% { opacity: 0; }
+      25% { opacity: 1; }
+    }
+
+    .fade-text span {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      animation: fade 4s infinite;
+    }
+
+    .fade-text span:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .fade-text span:nth-child(2) {
+      animation-delay: 2s;
+    }
+
+    section {
+      padding: 2rem;
+      background-color: #1c1c1c;
+    }
+
+    .random-items {
+      display: flex;
+      overflow-x: auto;
+      padding: 2rem;
+    }
+
+    .random-item {
+      width: 300px;
+      margin-right: 20px;
+      background-color: #272727;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .random-item:last-child {
+      margin-right: 0;
+    }
+
+    .random-item .image-container {
+      height: 200px;
+      overflow: hidden;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .random-item .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .random-item .text {
+      padding: 1rem;
+    }
+
+    footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 0;
+      height: 100px;
+      flex-shrink: 0;
+    }
+
+    button {
+      background-color: #ffffff;
+      color: #1c1c1c;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d1d1d1;
+    }
+    
+    #signout {
+      margin-right: 1rem;
+    }
+  </style>
+
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"></script>
+  <script type="module" src="homepage/script.js" defer></script>
+</head>
+
+<body>
+  <nav>
+    <a id="title" href="#">SwapZone</a>
+  </nav>
+  <nav>
+    <ul id="links">
+      <li><a href="homepage/index.html">Home</a></li>
+      <li><a href="signUp/signup.html">Sign Up</a></li>
+      <li><a href="login/login.html">Sign in</a></li>
+      <li><a href="postItems/postItems.html">Post</a></li>
+      <li><a href="itemPosted/postedItems.html">Posted Items</a></li>
+      <li><a href="allItemsPosted/allItemsPosted.html">All Posted Items</a></li>
+      <li><button id='signout'>Sign Out</button></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Discover 🔍 </h1>
+    <h1>Swap 🔄 </h1>
+    <h1>Enjoy 😄</h1>
+    <div class="fade-text">
+      <span>Meet</span>
+      <span>Trade</span>
+    </div>
+  </header>
+
+  <div id="popup"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;">
+    <div
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #454545; padding: 20px; color: white;">
+      <h2>Welcome to SwapZone!</h2>
+      <p>You are not logged in.</p>
+      <p>Please log in or sign up to continue.</p>
+
+      <a href="login/login.html"><button>Login</button></a>
+      <a href="signUp/signup.html"><button>Sign Up</button></a>
+    </div>
+  </div>
+
+  <section id="consoles">
+    <div class="random-items" id="itemsList"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 SwapZone. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
