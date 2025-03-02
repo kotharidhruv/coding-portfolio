@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        div {
+            text-align: center;
+            display: inline-block;
+            width: 250px;
+            height: 450px;
+            background-color: rgb(37, 101, 101);
+            border-radius: 15px;
+        }
+
+        body {
+            font-family: Arial;
+            color: black;
+        }
+
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .left {
+            left: 0;
+            background-color: rgb(49, 152, 128);
+        }
+
+        .right {
+            right: 0;
+            background-color: rgb(18, 131, 141);
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+
+</head>
+<div class="split left">
+    <label>
+    Both players are allotted a certain amount of time, namely how long it takes to say “Rock, Paper, Scissors, Shoot!” in
+    order to select either rock, paper, or scissors. Rock is made by turning your hand into a fist, scissors is made by
+    pointing your index and middle fingers out, and paper is made by extending all your fingers out, sort of like when you
+    make a high five. Rock beats scissors, scissors beats paper, and paper beats rock. If two players pick the same thing,
+    it is a tie. Rock Paper Scissors can be played in various different modes, such as best to 3 and best to 5, (or the
+    first person to get 3 wins/5 wins is the winner). If one player delays their sign and shows it after they’ve seen the
+    other player’s sign, it is considered cheating, and they either lose or the round is redone. Additionally, Rock Paper
+    Scissors is usually played to settle arguments, pick choices, or simply to pass time.
+    </label>
+</div>
+<div class="split right">
+    <div>
+    <body style="text-align: center !important; margin: 43% !important; margin-top: 15% !important; background-color:rgb(83, 150, 150); border-radius: 25px;">
+        <br>
+        <!--When any of the buttons are clicked, they run the repective functions linked to them-->
+            <input id="Rock" type="button" value="Rock" onclick="rock()">
+            <input id="Paper" type="button" value="Paper" onclick="paper()">
+            <input id="Scissors" type="button" value="Scissors" onclick="scissors()">
+            <p></p>
+            <input id="Confirm" type="button" value="Confirm" onclick="confirmOnePlayer()">
+            <script src="RPS.js"></script>
+        </body>
+    </div>
+</div>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        
+        /* Split the screen in 3 */
+    .splitbig {
+        height: 100%;
+        width: 45%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+     }
+     .splitsmall {
+        height: 100%;
+        width: 10%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+        padding-top: 20px;
+        background-image: linear-gradient(to right, #6ce0fd , rgb(102, 231, 211));
+     }
+  
+  /* Control the left side */
+    .left {
+        left: 0;
+        background-color: #6ce0fd;
+    }
+  
+  /* Control the right side */
+    .right {
+        right: 0;
+        background-color: rgb(102, 231, 211);
+    }
+
+  
+  /* If you want the content centered horizontally and vertically */
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    } 
+    </style>
+</head>
+<body>
+    <div class="splitbig left">
+        <div class="centered">
+        <!--When any of the buttons are clicked, they run the repective functions linked to them-->
+            <input id="Rock" type="button" value="Rock" onclick="rock()">
+            <input id="Paper" type="button" value="Paper" onclick="paper()">
+            <input id="Scissors" type="button" value="Scissors" onclick="scissors()">
+            <p></p>
+            <input id="Confirm" type="button" value="Confirm"onclick="confirmTwoPlayer1P()">
+            <script src="RPS.js"></script>
+        </div>
+    </div>
+    <div class="splitsmall centered">
+        <div class="centered">
+            <input id="reset" type="button" value="Reset!" onclick="reset()" >
+        </div>    
+    </div>
+    <div class="splitbig right">
+        <div class="centered">
+            <input id="Rock2" type="button" value="Rock" onclick="rock2()">
+            <input id="Paper2" type="button" value="Paper" onclick="paper2()">
+            <input id="Scissors2" type="button" value="Scissors" onclick="scissors2()">
+            <p></p>
+            <input id="Confirm2" type="button" value="Confirm" onclick="confirmTwoPlayer()">
+            <p></p>
+            
+            <script src="RPS.js"></script>
+        </div>
+    </div>
+    
+</body>
+</html>
