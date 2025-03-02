@@ -4,3 +4,6 @@
 [submodule "Learnings/Byjus/Learnings/Byjus/project140"]
 	path = Learnings/Byjus/Learnings/Byjus/project140
 	url = https://github.com/kotharidhruv/project-140.git
+[submodule "learnings/byjus/learnins/byjus/temp/sentiment_analysis-1"]
+	path = learnings/byjus/learnins/byjus/temp/sentiment_analysis-1
+	url = https://github.com/kotharidhruv/sentiment-analysis-1.git
